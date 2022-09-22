@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <title>Center - Allon Fasaha</title>
+
+  <meta name="description" content="" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons. Uncomment required icon fonts -->
+  <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+  <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+  <link rel="stylesheet" href="../assets/css/demo.css" />
+
+  <!-- Vendors CSS -->
+  <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+  <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+
+  <!-- Page CSS -->
+
+  <!-- Helpers -->
+  <script src="../assets/vendor/js/helpers.js"></script>
+  <script src="../assets/js/config.js"></script>
+
+  <style>
+    .centersTable thead {
+      background: #F7941D;
+      border-radius: 10px;
+    }
+
+    .shift-them{
+      text-transform: uppercase;
+    }
+
+    th{
+      font-weight:bold;
+    }
+
+    #performanceGraph {
+      max-width: 100%;
+      height: 50vh;
+    }
+    #performanceGraph2{
+      max-width: 100%;
+      height: 50vh;
+      margin-top: 2.5rem;
+    }
+    .charts {
+      max-width: 100%;
+      height: 10vh;
+      margin-bottom: 10px;
+    }
+    .centersTable thead th {
+      color: #fff !important
+    }
+
+    .centersTable thead th:first-child {
+      border-radius: 10px 0 0 0;
+    }
+
+    .centersTable thead th:last-child {
+      border-radius: 0 10px 0 0;
+    }
+
+    .studentTabs .nav-link {
+      background: #F7941D !important;
+      color: #fff !important;
+      font-size: 18px !important;
+      border: transparent !important
+    }
+
+    .studentTabs .nav-link.active {
+      background: #23608A !important
+    }
+
+    .tab-content {
+      background: #F5F5F7 !important
+    }
+
+    .accordion-button {
+      font-size: 18px;
+      color: #000 !important;
+      font-weight: bolder;
+    }
+
+    .table> :not(caption)>*>* {
+      padding: 0.625rem 0.25rem !important;
+    }
+    .theTable thead th {
+      text-align: center;
+      text-transform: capitalize;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Layout wrapper -->
+    <div class="modal fade" id="editStu" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document" id="cont">
+       
+    </div>
+    </div>
+  
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
+
+      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme sideBar">
+
+
+      </aside>
+      <!-- / Menu -->
+
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
+
+        <nav
+          class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme theNavBar"
+          id="layout-navbar">
+
+        </nav>
+
+        <!-- / Navbar -->
+
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <!-- <div class="row"> -->
+            <div class="card card-body">
+              <div class="mb-3">
+                <button class="btn btn-outline-primary btn-sm" onclick="history.go(-1)"><i class="bx bx-chevron-left"
+                    style="vertical-align: bottom;"></i>Back</button>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="text-center mt-4">
+                    <div id="stp"></div>
+                    <h6 class="mt-3" id="student-name">Sani Abdu</h6>
+                    <h6 id="student-location">Gidan Buhari Zoo Road Center</h6>
+                  </div>
+                </div>
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="card card-body text-center">
+                        <h4 class="mb-0 text-info" id="total-score">540</h4>
+                        <p class="mb-0 text-info">Total Score</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card card-body text-center">
+                        <h4 class="mb-0 text-success" id="total-quiz">540</h4>
+                        <p class="mb-0 text-success">Quiz Points</p>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card card-body text-center">
+                        <h4 class="mb-0 text-danger">0</h4>
+                        <p class="mb-0 text-danger">Time Spent</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="courseProgress mt-4 mb-4">
+                    <div class="row gx-4">
+                      <div class="col-sm-12">
+                        <div class="card card-body text-center">
+                          <div class="allprogress row ">
+                            <div class="col-md-4">
+                            <div class="row gx-1">
+                              <div class="col-sm-4">
+                                <div id="progressM1" class="charts"></div>
+                                <p class="text-primary" style="margin-top: -15px;">Level 1</p>
+                              </div>
+                              <div class="col-sm-4">
+                                <div id="progressM2" class="charts"></div>
+                                <p class="text-primary" style="margin-top: -15px;">Level 2</p>
+                              </div>
+                              <div class="col-sm-4">
+                                <div id="progressM3" class="charts"></div>
+                                <p class="text-primary" style="margin-top: -15px;">Level 3</p>
+                              </div>
+                              <h4 class="mb-0 text-primary">Module One</h4>
+                            </div>  
+                          </div>
+                          <div class="col-md-4">
+                            <div class="row gx-1">
+                              <div class="col-sm-4">
+                                <div id="progressM4" class="charts"></div>
+                                <p class="text-primary" style="margin-top: -15px;">Level 1</p>
+                              </div>
+                              <div class="col-sm-4" style="margin-top: -20px">
+                                <div id="progressM5" class="charts"></div>
+                                <p class="text-primary" style="margin-top: -15px;">Level 2</p>
+                              </div>
+                              <div class="col-sm-4">
+                                <div id="progressM6" class="charts"></div>
+                                <p class="text-primary" style="margin-top: -15px;">Level 3</p>
+                              </div>
+                              <h4 class="mb-0 text-primary">Module Two</h4>
+                            </div> 
+                            </div>
+                            <div class="col-md-4">
+                              <div class="row gx-1">
+                                <div class="col-sm-4">
+                                  <div id="progressM7" class="charts"></div>
+                                  <p class="text-primary" style="margin-top: -15px;">Level 1</p>
+                                </div>
+                                <div class="col-sm-4">
+                                  <div id="progressM8" class="charts"></div>
+                                  <p class="text-primary" style="margin-top: -15px;">Level 2</p>
+                                </div>
+                                <div class="col-sm-4">
+                                  <div id="progressM9" class="charts"></div>
+                                  <p class="text-primary" style="margin-top: -15px;">Level 3</p>
+                                </div>
+                                <h4 class="mb-0 text-primary">Module Three</h4>
+                              </div> 
+                          </div>
+                          </div>
+                        </div>
+                        
+                        </div>
+                    </div>
+                  </div>
+
+
+                </div>
+               
+              </div>
+
+
+              <!-- <span class="mt-3 mb-3" style="border-top: 2px solid rgb(185, 184, 187);"></span> -->
+              <div class="accordion " id="accordionExample">
+                <div class="card accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                      data-bs-target="#biodata" aria-expanded="true" aria-controls="levelAcc1">
+                     Bio Data
+                    </button>
+                  </h2>
+                  <div id="biodata" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">                     
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="text-primary">Student</h6>
+                          <table class="table table-borderless">
+                            <tr>
+                              <th>Name : </th>
+                              <td class="student-info">Audu Abba</td>
+                            </tr>
+                            <tr>
+                              <th>Country : </th>
+                              <td class="student-info">Nigeria</td>
+                            </tr>
+                            <tr>
+                              <th>State : </th>
+                              <td class="student-info">Jigawa</td>
+                            </tr>
+                            <tr>
+                              <th>L.G.A : </th>
+                              <td class="student-info">Dutse</td>
+                            </tr>
+                            <tr>
+                              <th>Age : </th>
+                              <td class="student-info">12</td>
+                            </tr>
+                            <tr>
+                              <th>Center : </th>
+                              <td class="student-info">Gwale</td>
+                            </tr>
+                            <tr>
+                              <th>Education Background : </th>
+                              <td>Primary School Dropout</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="col-sm-6">
+                          <h6 class="text-primary">Parent/Guardian</h6>
+                          <table class="table table-borderless">
+                            <tr>
+                              <th>Name : </th>
+                              <td id="parent1">Alhaji Abba</td>
+                            </tr>
+                            <tr>
+                              <th>Occupation : </th>
+                              <td id="parent2">Cobbler</td>
+                            </tr>
+                            <tr>
+                              <th>Relationship : </th>
+                              <td id="parent3">Father</td>
+                            </tr>
+                            <tr>
+                              <th>Phone Number : </th>
+                              <td id="parent4">+23482345869</td>
+                            </tr>
+                            <tr>
+                              <th>Address : </th>
+                              <td id="parent5">Wudil, Kano State, Nigeria</td>
+                            </tr>
+                          </table>
+
+                          <h6 class="text-primary mt-3">Parent/Guardian Of Residence</h6>
+                          <table class="table table-borderless">
+                            <tr>
+                              <th>Name : </th>
+                              <td id="parent6">Alhaji Abba Bunkure</td>
+                            </tr>
+                            <tr>
+                              <th>Relationship : </th>
+                              <td id="parent8">Teacher</td>
+                            </tr>
+                            <tr>
+                              <th>Phone Number : </th>
+                              <td id="parent9">+23482345869</td>
+                            </tr>
+                            <tr>
+                              <th>Address : </th>
+                              <td id="parent10">Wudil, Kano State, Nigeria</td>
+                            </tr>
+                          </table>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-center mt-3">
+                          <button class="btn btn-warning btn-sm" data-bs-target="#editStu" data-bs-toggle="modal">Edit Student</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
+              </div>
+              <!-- <span class="mt-3 mb-3" style="border-top: 2px solid rgb(185, 184, 187);"></span> -->
+
+
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="d-flex justify-content-end mt-5">
+                    <div class="col-sm-4">
+                      <select class="form-select form-select-sm" id="select-subject">
+                        <option value="Numeracy">Numeracy</option>
+                        <option value="Literacy">Literacy</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    
+                    <canvas id="performanceGraph"></canvas>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="text-center">
+                    <div id="performanceGraph2"></div>
+                  </div>
+                </div>
+              </div>
+              
+
+               
+                
+                
+
+
+              <h2 class="mt-5 text-primary">Learning Analytics</h2>
+              <div class="nav-align-top mb-4">
+                <ul class="nav nav-tabs nav-fill studentTabs" role="tablist" id="nav-section">
+                  <!-- <li class="nav-item">
+                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                      data-bs-target="#module1">
+                      Module 1
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#module2">
+                      Module 2
+                    </button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#module3">
+                      Module 3
+                    </button>
+                  </li> -->
+                </ul>
+                <div class="tab-content" id="nav-body">
+                  <!-- <div class="tab-pane fade show active" id="module1" role="tabpanel">
+
+
+                      <div class="accordion mt-3" id="accordionExample">
+                        <div class="card accordion-item active">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button type="button" class="accordion-button" data-bs-toggle="collapse"
+                              data-bs-target="#levelAcc1" aria-expanded="true" aria-controls="levelAcc1">
+                              Level 1
+                            </button>
+                          </h2>
+                          <div id="levelAcc1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <h5 class="text-primary">Literacy</h5>
+                                  <div class="table-responsive">
+                                    <table class="table theTable">
+                                      <thead>
+                                        <th>Topics</th>
+                                        <th>Subtopics</th>
+                                        <th>Assessment</th>
+                                        <th>Assessment <br>Trial</th>
+                                        <th>Quiz <br> Points</th>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Phonics</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>1</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Spelling</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>4</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Reading</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>3</td>
+                                          <td>98</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <h5 class="text-primary">Numeracy</h5>
+                                  <div class="table-responsive">
+                                    <table class="table theTable">
+                                      <thead>
+                                        <th>Topics</th>
+                                        <th>Subtopics</th>
+                                        <th>Assessment</th>
+                                        <th>Assessment <br>Trial</th>
+                                        <th>Quiz <br> Points</th>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Numbers</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>1</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Basic Op</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>4</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Algorithm</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>3</td>
+                                          <td>98</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                              data-bs-target="#levelAcc2" aria-expanded="false" aria-controls="levelAcc2">
+                              Level 2
+                            </button>
+                          </h2>
+                          <div id="levelAcc2" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <h5 class="text-primary">Literacy</h5>
+                                  <div class="table-responsive">
+                                    <table class="table theTable">
+                                      <thead>
+                                        <th>Topics</th>
+                                        <th>Subtopics</th>
+                                        <th>Assessment</th>
+                                        <th>Assessment <br>Trial</th>
+                                        <th>Quiz <br> Points</th>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Phonics</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>1</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Spelling</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>4</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Reading</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>3</td>
+                                          <td>98</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <h5 class="text-primary">Numeracy</h5>
+                                  <div class="table-responsive">
+                                    <table class="table theTable">
+                                      <thead>
+                                        <th>Topics</th>
+                                        <th>Subtopics</th>
+                                        <th>Assessment</th>
+                                        <th>Assessment <br>Trial</th>
+                                        <th>Quiz <br> Points</th>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Numbers</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>1</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Basic Op</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>4</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Algorithm</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>3</td>
+                                          <td>98</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                              data-bs-target="#levelAcc3" aria-expanded="false" aria-controls="levelAcc3">
+                              Level 3
+                            </button>
+                          </h2>
+                          <div id="levelAcc3" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <h5 class="text-primary">Literacy</h5>
+                                  <div class="table-responsive">
+                                    <table class="table">
+                                      <thead>
+                                        <th>Topics</th>
+                                        <th>Subtopics</th>
+                                        <th>Assessment</th>
+                                        <th>Trial</th>
+                                        <th>Points</th>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Phonics</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>1</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Spelling</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>4</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Reading</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>3</td>
+                                          <td>98</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <h5 class="text-primary">Numeracy</h5>
+                                  <div class="table-responsive">
+                                    <table class="table">
+                                      <thead>
+                                        <th>Topics</th>
+                                        <th>Subtopics</th>
+                                        <th>Assessment</th>
+                                        <th>Trial</th>
+                                        <th>Points</th>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td>Numbers</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>1</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Basic Op</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>4</td>
+                                          <td>100</td>
+                                        </tr>
+                                        <tr>
+                                          <td>Algorithm</td>
+                                          <td>Literacy</td>
+                                          <td>120</td>
+                                          <td>3</td>
+                                          <td>98</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- / Content -->
+
+          <!-- Footer -->
+          <footer class="content-footer footer bg-footer-theme">
+            <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+              <div class="mb-2 mb-md-0">
+                ©
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                Allon Fasaha
+              </div>
+
+            </div>
+          </footer>
+          <!-- / Footer -->
+
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+    </div>
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
+
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/core.js -->
+  <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/js/lgas.js"></script>
+  <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../assets/vendor/libs/echarts/echarts.js"></script>
+  <script src="../assets/vendor/libs/chartjs/dist/chart.js"></script>
+  <script src="../assets/vendor/libs/sweetalert/sweetalert2.all.js"></script>
+  <script src="../assets/vendor/js/menu.js"></script>
+  <!-- endbuild -->
+  <script src="../assets/vendor/js/webcam.js"></script>
+  
+
+  <!-- endbuild -->
+
+  <script src="../assets/js/index.js"></script>
+  <script src="../assets/js/studentDetail.js"></script>
+
+  <script>
+    document.querySelector(`a[href="students.html"]`).parentElement.classList.add('active');
+  </script>
+  <!-- Vendors JS -->
+
+  <!-- Main JS -->
+  <script src="../assets/js/main.js"></script>
+
+  <!-- Page JS -->
+  <script src="../assets/js/dashboards-analytics.js"></script>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="../assets/vendor/js/chartSample.js"></script>
+  <script id="chart-in-here"></script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="bootstrap-4.5.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <title>Document</title>
+    <style>
+        body {
+            background: url('./images/sliders/image1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        label{
+            font-weight:600;
+            color: #073351;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+
+            <div class="h3">
+                Sign-in
+            </div>
+
+            <p class="small text-muted pt-3">
+                Sign-in to track your donation
+            </p>
+
+        </div>
+
+        <form>
+            <span class="loading-box"></span>
+            <span class="signupForm"></span>
+            <div class="form-group pt-2">
+                <label for="email"> Email Address </label>
+                <input type="email" class="input-group-prepend form-control" id="email" placeholder="email">
+            </div>
+
+            <div class="form-group pt-2">
+                <label for="password">Password</label>
+                <input type="password" class="input-group-prepend form-control" id="pin" placeholder="password">
+            </div>
+
+            <div class="mt-5 mb-3 d-flex justify-content-center">
+                <button type="button" id="loginAccount" class="btn">Sign-in</button>
+            </div>
+        </form>
+        <hr/>
+        <p class="text-center small mb-3 d-flex justify-content-center">
+            Not registered? <a href="register.html" class="link1">sign-up</a>
+        </p>
+
+    </div>
+
+
+    <script src="./js/jquery.js"></script>
+    <script src="./js/register.js"></script>
+</body>
+
+</html>

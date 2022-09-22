@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <title>Impact</title>
+  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="impact.css" />
+  <link rel="stylesheet" href="bootstrap-4.5.2/dist/css/bootstrap.min.css">
+
+  <style>
+    .btn-primary {
+      background: #073351 !important;
+    }
+  </style>
+</head>
+
+<body class="p-2" style="background: #E5E5E5;">
+  <nav class="navbar navbar-expand-lg  navbar-light fixed-top" id="theNavBar">
+
+  </nav>
+
+  <!-- Statistics -->
+  <section class="md:flex mb-5 items-stretch gap-[2rem]" style="margin-top: 100px;">
+    <div class="bg-white rounded-md p-8">
+      <h1 class="text-center text-2xl mb-4">Statistics</h1>
+      <div class="flex justify-evenly md:justify-between mb-3">
+        <div>
+          <select class="p-2 rounded-md border-solid border border-[#0D5E95]" name="" id="">
+            <option value="">Nigeria</option>
+            <option value="">Ghana</option>
+          </select>
+        </div>
+        <div>
+          <select class="p-2 rounded-md border-solid border border-[#0D5E95]" name="" id="">
+            <option value="">Kano</option>
+            <option value="">Accra</option>
+          </select>
+        </div>
+      </div>
+      <button class="px-8 text-white rounded-md py-1 mb-8 bg-green-400 w-[100%]">
+        Filter
+      </button>
+      <div class="text-center">
+        <p class="text-center mb-4">Kano,Nigeria</p>
+        <p class="mb-3">55,046</p>
+        <img class="mx-auto mb-4" src="images/impact-images/Boy & Girl.png" alt="" />
+        <p class="mb-8">Out of School Children</p>
+      </div>
+      <div class="flex justify-evenly">
+        <div class="text-center">
+          <p class="mb-3">25,000</p>
+          <img class="mx-auto mb-4" src="images/impact-images/fa6-solid_child.png" alt="" />
+          <p>Boys</p>
+        </div>
+        <div class="text-center mb-8">
+          <p class="mb-3">25,000</p>
+          <img class="mx-auto mb-4" src="images/impact-images/fa6-solid_child-dress.png" alt="" />
+          <p>Girls</p>
+        </div>
+      </div>
+      <p class="mb-4">References:</p>
+      <h3>Unicef</h3>
+
+      www.unicef.org/africa/44y2n/jas<a href="www.unicef.org/africa/44y2n/jas"></a>
+
+      <h3>Nigerian Bureau of Statistics</h3>
+
+      www.unicef.org/africa/44y2n/jas<a href="www.unicef.org/africa/44y2n/jas"></a>
+    </div>
+    <!-- graph section -->
+    <div class="w-[100%]">
+      <div class="bg-white p-8 rounded-md">
+        <div class="lg:flex justify-around gap-8">
+          <div>
+            <div class="row">
+              <select name="" class="form-control col-sm-2 form-control-sm" id="">
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+              </select>
+
+              <div class="form-group col-sm-2">
+                <input type="radio" name="albg" id="All">
+                <label for="All">All</label>
+              </div>
+              <div class="form-group col-sm-2">
+                <input type="radio" name="albg" id="Boys">
+                <label for="Boys">Boys</label>
+              </div>
+              <div class="form-group col-sm-2">
+                <input type="radio" name="albg" id="Girls">
+                <label for="Girls">Girls</label>
+              </div>
+            </div>
+            <div>
+              <canvas class="w-[683px] h-[328px]" id="myChart"></canvas>
+            </div>
+          </div>
+
+
+          <div class="text-center lg:w-min shadow-md shadow-slate-300 p-4 rounded-sm">
+            <p class="text-2xl mb-4">123,543</p>
+            <img class="mx-auto mb-4" src="images/impact-images/Boy & Girl.png" alt="" />
+
+            <p>Total</p>
+            <p>Registerd Children</p>
+          </div>
+        </div>
+      </div>
+      <!-- all -->
+      <div class="tab flex justify-between bg-white mt-8 px-6 py-2 rounded-sm">
+        <div class="flex tab gap-6 capitalize">
+          <button class="tablinks active py-3" onclick="openCity(event, 'impact')">
+            All
+          </button>
+          <button class="tablinks py-3" onclick="openCity(event, 'impact')">
+            learning
+          </button>
+          <button class="tablinks py-3" onclick="openCity(event, 'impact')">
+            skill acquisition</a>
+          </button>
+          <button class="tablinks py-3" onclick="openCity(event, 'impact')">
+            scholarship
+          </button>
+        </div>
+        <button class="text-white rounded-md bg-[#31ac4c] px-8 py-2 rounded-none">
+          Donate
+        </button>
+      </div>
+
+      <div class=" flex gap-8 p-5 bg-white">
+        <div id="impact" class="text-center tabcontent rounded-md bg-white p-5 shadow-lg shadow-slate-300">
+          <img class="mx-auto mb-4" src="images/impact-images/healthicons_child-program.png" alt="" />
+          <h1 class="text-2xl font-semibold">55,000</h1>
+          <p>Registerd Children</p>
+        </div>
+        <div id="impact" class="text-center tabcontent rounded-md bg-white p-5 shadow-lg shadow-slate-300">
+          <img class="mx-auto mb-4" src="images/impact-images/healthicons_i-schedule-school-date-time.png" alt="" />
+          <h1 class="text-2xl font-semibold">34,560</h1>
+          <p>Scheduled To Start</p>
+        </div>
+        <div id="impact" class="text-center tabcontent rounded-md bg-white p-5 shadow-lg shadow-slate-300">
+          <img class="mx-auto mb-4 w-[45px]" src="images/impact-images/fa6-solid_user-graduate.png" alt="" />
+          <h1 class="text-2xl font-semibold">35,500</h1>
+          <p>Graduated</p>
+        </div>
+      </div>
+      <div class="text-[#073351] pb-4 rounded-md bg-white">
+        <table class="w-[100%]">
+          <thead class="mb-5 text-center">
+            <tr class="text-white bg-[#073351] py-4 rounded-md">
+              <th>picture</th>
+              <th>name</th>
+              <th>age</th>
+              <th>location</th>
+              <th>status</th>
+              <th>details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img src="images/impact-images/Ellipse 9.png" class="w-[40px] h-[40px] mx-auto" alt="" />
+              </td>
+              <td>sani aliyu</td>
+              <td>14</td>
+              <td>tarauni,Kano</td>
+              <td>yet to start</td>
+              <td class="flex justify-center gap-4">
+                view details
+
+                <img src="images/impact-images/eye 1.png" alt="" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/impact-images/Ellipse 9.png" class="w-[40px] h-[40px] mx-auto" alt="" />
+              </td>
+              <td>sani aliyu</td>
+              <td>14</td>
+              <td>tarauni,Kano</td>
+              <td>graduated</td>
+              <td class="flex justify-center gap-4">
+                view details
+
+                <img src="images/impact-images/eye 1.png" alt="" />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="images/impact-images/Ellipse 9.png" class="w-[40px] h-[40px] mx-auto" alt="" />
+              </td>
+              <td>sani aliyu</td>
+              <td>14</td>
+              <td>tarauni,Kano</td>
+              <td>basic education</td>
+              <td class="flex justify-center gap-4">
+                view details
+
+                <img src="images/impact-images/eye 1.png" alt="" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="impact.js"></script>
+
+</body>
+
+</html>
