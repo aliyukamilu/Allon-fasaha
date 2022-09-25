@@ -1,5 +1,5 @@
 // const hostLocal = 'https://steamledge.com/allonfasaha/admin/'
-const hostLocal = 'http://localhost/allonfasaha/admin/'
+const hostLocal = 'http://localhost/Allon-fasaha/dashboard/admin/'
 window.addEventListener('load', fetchCenter, false);
 
 let adminName = localStorage.getItem('allonfasahaAdminUser');
@@ -93,7 +93,7 @@ $('.theNavBar').html(`
     </a>
     <ul class="dropdown-menu dropdown-menu-end">
       <li>
-        <a class="dropdown-item" href="#">
+        <a class="dropdown-item" href="profile.html">
           <div class="d-flex">
             <div class="flex-shrink-0 me-3">
               <div class="avatar avatar-online">

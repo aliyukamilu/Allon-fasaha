@@ -9,8 +9,10 @@ function login($username, $password)
     $totalRows_User_re = mysqli_num_rows($User_re);
     if ($totalRows_User_re > 0) {
         if ($row_User_re['password'] == $password) {
-            $arr = ['status' => 1, 'message' => 'Buzzing you in 😎', 'userId' => $row_User_re['id'], 'type' => 'CA', 'fullName' => $row_User_re['fullname'], 'userName' => $row_User_re['email'],'country' => $row_User_re['country'],
-            'state' => $row_User_re['state'],'lga' => $row_User_re['lga'],'center' => $row_User_re['center'],'role' => $row_User_re['role'],'phone' => $row_User_re['phone']];
+            $arr = [
+                'status' => 1, 'message' => 'Buzzing you in 😎', 'userId' => $row_User_re['id'], 'type' => 'CA', 'fullName' => $row_User_re['fullname'], 'userName' => $row_User_re['email'], 'country' => $row_User_re['country'],
+                'state' => $row_User_re['state'], 'lga' => $row_User_re['lga'], 'center' => $row_User_re['center'], 'role' => $row_User_re['role'], 'phone' => $row_User_re['phone']
+            ];
             exit(json_encode($arr));
         }
     } else {
@@ -20,7 +22,7 @@ function login($username, $password)
         $totalRows_User_reA = mysqli_num_rows($User_reA);
         if ($totalRows_User_reA > 0) {
             if ($row_User_reA['password'] == $password) {
-                $arr = ['status' => 1, 'message' => 'Buzzing you in 😎', 'userId' => $row_User_reA['l_id'], 'type' => 'GA', 'fullName' => $row_User_reA['fullname'], 'userName' => $row_User_reA['username'],'phone' => $row_User_reA['phone']];
+                $arr = ['status' => 1, 'message' => 'Buzzing you in 😎', 'userId' => $row_User_reA['l_id'], 'type' => 'GA', 'fullName' => $row_User_reA['fullname'], 'userName' => $row_User_reA['username'], 'phone' => $row_User_reA['phone']];
                 exit(json_encode($arr));
             }
         }
@@ -143,16 +145,16 @@ function createUser($all)
 
     //         break;
     //     case '1':
-            $query_User_re = sprintf("INSERT INTO `admin_center`(`fullname`, `region`, `country`, `state`, `phone`, `lga`, `email`, `role`, `center`, `password`) 
+    $query_User_re = sprintf("INSERT INTO `admin_center`(`fullname`, `region`, `country`, `state`, `phone`, `lga`, `email`, `role`, `center`, `password`) 
             VALUES ('$c_name','','$c_country','$c_state','$phone','$c_lga','$email','$c_role','$c_center','$password')");
-            $User_re = mysqli_query($allonfasaha, $query_User_re) or die(mysqli_error($allonfasaha));
-            if ($User_re) {
-                $returnResponse = ['status' => 1, 'message' => "{$c_name} added successfully"];
-                exit(json_encode($returnResponse));
-            } else {
-                $returnResponse = ['status' => 0, 'message' => "{$c_name} not added, try again"];
-                exit(json_encode($returnResponse));
-            }
+    $User_re = mysqli_query($allonfasaha, $query_User_re) or die(mysqli_error($allonfasaha));
+    if ($User_re) {
+        $returnResponse = ['status' => 1, 'message' => "{$c_name} added successfully"];
+        exit(json_encode($returnResponse));
+    } else {
+        $returnResponse = ['status' => 0, 'message' => "{$c_name} not added, try again"];
+        exit(json_encode($returnResponse));
+    }
     //     default:
     //         # code...
     //         break;
@@ -180,7 +182,7 @@ function createUserAssitant($all)
             VALUES ('$c_name','','$c_country','$c_state','$phone','$c_lga','$email','$password','$c_center','$address','$hash_id')");
     $User_re = mysqli_query($allonfasaha, $query_User_re) or die(mysqli_error($allonfasaha));
     if ($User_re) {
-        $returnResponse = ['status' => 1, 'message' => "{$c_name} added successfully", 'hash' => "{$hash_id}", 'center' => "{$c_center}", ];
+        $returnResponse = ['status' => 1, 'message' => "{$c_name} added successfully", 'hash' => "{$hash_id}", 'center' => "{$c_center}",];
         exit(json_encode($returnResponse));
     } else {
         $returnResponse = ['status' => 0, 'message' => "{$c_name} not added, try again"];
@@ -198,14 +200,14 @@ function centerAssistantImg()
     $center = $_POST['center'];
     $query_User_img = sprintf("INSERT INTO `center_assistant_image`(`hash_id`, `img`) VALUES ('$connectorr','$img')");
     $User_re_img = mysqli_query($allonfasaha, $query_User_img) or die(mysqli_error($allonfasaha));
-    if($User_re_img){
-    $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
-    exit(json_encode($returnResponse));
-} else {
-    $returnResponse = ['status' => 0, 'message' => " not added, try again"];
-    exit(json_encode($returnResponse));
-}
+    if ($User_re_img) {
+        $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
+        exit(json_encode($returnResponse));
+    } else {
+        $returnResponse = ['status' => 0, 'message' => " not added, try again"];
+        exit(json_encode($returnResponse));
     }
+}
 
 
 function createStudent($all)
@@ -256,12 +258,12 @@ function createStudent($all)
             $User_re = mysqli_query($allonfasaha, $query_User_re) or die(mysqli_error($allonfasaha));
             if ($User_re) {
                 $last_id = mysqli_insert_id($allonfasaha);
-                if ($last_id){
-                    $user_name = "AF"."-".$last_id."-".$c_center;
-                    $query_User_id = sprintf("UPDATE `access_students` SET `st_username` = '".$user_name."' WHERE id = '".$last_id."'");
+                if ($last_id) {
+                    $user_name = "AF" . "-" . $last_id . "-" . $c_center;
+                    $query_User_id = sprintf("UPDATE `access_students` SET `st_username` = '" . $user_name . "' WHERE id = '" . $last_id . "'");
                     $res = mysqli_query($allonfasaha, $query_User_id) or die(mysqli_error($allonfasaha));
                     // if ($res){
-                        
+
                     // }
                 }
                 $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
@@ -300,14 +302,14 @@ function saveImg()
     $img = $_POST['st_image'];
     $query_User_img = sprintf("INSERT INTO `st_pictures`(`hash_id`, `img`) VALUES ('$connectorr','$img')");
     $User_re_img = mysqli_query($allonfasaha, $query_User_img) or die(mysqli_error($allonfasaha));
-    if($User_re_img){
-    $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
-    exit(json_encode($returnResponse));
-} else {
-    $returnResponse = ['status' => 0, 'message' => " not added, try again"];
-    exit(json_encode($returnResponse));
-}
+    if ($User_re_img) {
+        $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
+        exit(json_encode($returnResponse));
+    } else {
+        $returnResponse = ['status' => 0, 'message' => " not added, try again"];
+        exit(json_encode($returnResponse));
     }
+}
 
 
 
@@ -425,11 +427,15 @@ function specificStudent($data)
             $row_User_re_parent = mysqli_fetch_assoc($User_re_parent);
             $totalRows_User_re_parent = mysqli_num_rows($User_re_parent);
             $getResponse[] = $row_User_re_parent;
-            $query_User_re_img = sprintf("SELECT * FROM st_pictures WHERE hash_id='{$row_User_re['hash_pin']}'");
+            $query_User_re_img = sprintf("SELECT img FROM st_pictures WHERE hash_id='{$row_User_re['hash_pin']}'");
             $User_re_img = mysqli_query($allonfasaha, $query_User_re_img) or die(mysqli_error($allonfasaha));
             $row_User_re_img = mysqli_fetch_assoc($User_re_img);
             $totalRows_User_re_img = mysqli_num_rows($User_re_img);
-            $getResponse[] = $row_User_re_img;
+            // if ($totalRows_User_re_img > 0) {
+            //     $getResponse[] = $row_User_re_img;
+            // } else {
+            //     $getResponse['img'] = "empty";
+            // }
         } while ($row_User_re = mysqli_fetch_assoc($User_re));
         exit(json_encode($getResponse));
     }
@@ -595,8 +601,8 @@ function centerInfo($data)
                     if ($totalRows_User_assistant_img > 0) {
                         do {
                             $getResponse[] = $row_User_assistant_img['img'];
-                         } while ($row_User_assistant_img = mysqli_fetch_assoc($User_assistant_img));
-                     }
+                        } while ($row_User_assistant_img = mysqli_fetch_assoc($User_assistant_img));
+                    }
                 } while ($row_User_assistant = mysqli_fetch_assoc($User_assistant));
             }
         } while ($row_User_re = mysqli_fetch_assoc($User_re));
@@ -714,15 +720,31 @@ function updateStudentProfile($data)
 function UpdateImg()
 {
     include "config/index.php";
-     $connectorr= $_POST['connector'];
+    $connectorr = $_POST['connector'];
     $img = $_POST['st_image'];
     $query_User_img = sprintf("UPDATE st_pictures SET img = '$img'  WHERE hash_id={$connectorr}");
     $User_re_img = mysqli_query($allonfasaha, $query_User_img) or die(mysqli_error($allonfasaha));
-    if($User_re_img){
-    $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
-    exit(json_encode($returnResponse));
-} else {
-    $returnResponse = ['status' => 0, 'message' => " not added, try again"];
-    exit(json_encode($returnResponse));
-}
+    if ($User_re_img) {
+        $returnResponse = ['status' => 1, 'message' => "{$connectorr}"];
+        exit(json_encode($returnResponse));
+    } else {
+        $returnResponse = ['status' => 0, 'message' => " not added, try again"];
+        exit(json_encode($returnResponse));
     }
+}
+
+function UpdatePass()
+{
+    include "config/index.php";
+    $connectorr = $_GET['id'];
+    $password = $_GET['pin'];
+    $query_User_img = sprintf("UPDATE l_users SET `password` = '$password'  WHERE l_id={$connectorr}");
+    $User_re_img = mysqli_query($allonfasaha, $query_User_img) or die(mysqli_error($allonfasaha));
+    if ($User_re_img) {
+        $returnResponse = ['status' => 1, 'message' => "password Updated successfully"];
+        exit(json_encode($returnResponse));
+    } else {
+        $returnResponse = ['status' => 0, 'message' => " password not Updated, try again"];
+        exit(json_encode($returnResponse));
+    }
+}

@@ -10,8 +10,12 @@ function getSpecificStudent() {
   fetch(`${hostLocal}php/?specificStudent=&id=${linkFetch[0]}`)
     .then(response => response.json())
     .then(jsonResponse => {
-      // console.log(jsonResponse[2]);
-      $('#stp').html(`<img src="${jsonResponse[2]['img']}"  class="rounded-circle" width="90">`);
+      // console.log(jsonResponse);
+      if (jsonResponse[2] === null){
+        $('#stp').html(`<img src="../assets/img/avatars/1.png"  class="rounded-circle" width="90">`);
+      }else{
+        $('#stp').html(`<img src="${jsonResponse[2]['img']}"  class="rounded-circle" width="90">`);
+      }
       document.getElementById('student-name').innerHTML = jsonResponse[0]['fullname'];
       document.getElementById('student-location').innerHTML = jsonResponse[0]['lga'];
       document.getElementById('student-location').innerHTML += ', ' + jsonResponse[0]['state'];

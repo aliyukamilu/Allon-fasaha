@@ -52,6 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         
     }elseif(isset($_GET['allStudentFeedChart'])){
         allStudentFeedChart();
+    }elseif(isset($_GET['updatePass'])){
+        UpdatePass();
 }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'gate.php';

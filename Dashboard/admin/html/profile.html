@@ -94,11 +94,11 @@
                   </div>
                   <div class="col mb-3">
                     <label for="emailLarge" class="form-label">New Password</label>
-                    <input type="password" id="" class="form-control" placeholder="Input new password" />
+                    <input type="password" id="pass" class="form-control" placeholder="Input new password" />
                   </div>
                   <div class="col mb-3">
                     <label for="emailLarge" class="form-label">Comfirm New Password</label>
-                    <input type="password" id="" class="form-control" placeholder="Comfirm new password" />
+                    <input type="password" id="Cpin" class="form-control" placeholder="Comfirm new password" />
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -179,20 +179,9 @@
   <script src="../assets/js/lgas.js"></script>
   <script src="../assets/vendor/libs/sweetalert/sweetalert2.all.js"></script>
   <script src="../assets/vendor/js/menu.js"></script>
-  <!-- endbuild -->
-
-  <script>
-    $('#updatePass').on('click', function () {
-      Swal.fire({
-        icon: 'success',
-        text: 'Password Updated Successfully.',
-        confirmButtonText: 'close'
-      })
-    })
-  </script>
-  <!-- endbuild -->
 
   <script src="../assets/js/index.js"></script>
+  <script src="../assets/js/profile.js"></script>
 
   <!-- Vendors JS -->
 
@@ -204,41 +193,7 @@
 
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <script>
-   let allDetais = localStorage.getItem('AFuserInfo')
-   
-   let correctDetais = JSON.parse(allDetais)
-      $('#details').html(`
-      <tr>
-                    <th>Name : </th>
-                    <td>${correctDetais.fullName}</td>
-                  </tr>
-                  <tr>
-                    <th>Role : </th>
-                    <td>${correctDetais.role}</td>
-                  </tr>
-                  <tr>
-                    <th>Center : </th>
-                    <td>${correctDetais.center}</td>
-                  </tr>
-                  <tr>
-                    <th>Country : </th>
-                    <td>${correctDetais.country}</td>
-                  </tr>
-                  <tr>
-                    <th>State : </th>
-                    <td>${correctDetais.state}</td>
-                  </tr>
-                  <tr>
-                    <th>L.G.A : </th>
-                    <td>${correctDetais.lga}</td>
-                  </tr>
-                  <tr>
-                    <th>Phone : </th>
-                    <td>${correctDetais.phone}</td>
-                  </tr>
-      `)
-  </script>
+ 
 </body>
 
 </html>
