@@ -431,11 +431,7 @@ function specificStudent($data)
             $User_re_img = mysqli_query($allonfasaha, $query_User_re_img) or die(mysqli_error($allonfasaha));
             $row_User_re_img = mysqli_fetch_assoc($User_re_img);
             $totalRows_User_re_img = mysqli_num_rows($User_re_img);
-            // if ($totalRows_User_re_img > 0) {
-            //     $getResponse[] = $row_User_re_img;
-            // } else {
-            //     $getResponse['img'] = "empty";
-            // }
+            $getResponse[] = $row_User_re_img;
         } while ($row_User_re = mysqli_fetch_assoc($User_re));
         exit(json_encode($getResponse));
     }
