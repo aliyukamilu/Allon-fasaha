@@ -140,54 +140,7 @@ $(`a[href='${theUrlLast}']`).parent().addClass('active');
 
 // Chart
 
-if ($('#dashChart')) {
-  const labels = [
-    'Center 1',
-    'Center 2',
-    'Center 3',
-    'Center 4'
-  ];
 
-  const data = {
-    labels: labels,
-    datasets: [
-      {
-        label: 'Total Students',
-        backgroundColor: '#23608A',
-        borderColor: 'rgb(255, 99, 132)',
-        borderRadius: 5,
-        data: [10, 30, 50, 32],
-        
-      },
-      {
-        label: 'Total Logins',
-        backgroundColor: '#F7941D',
-        borderColor: 'rgb(255, 99, 132)',
-        borderRadius: 5,
-        data: [12, 29, 48, 32],
-      }
-    ]
-  };
-
-  const config = {
-    type: 'bar',
-    data: data,
-    options: {
-      barValueSpacing: 20,
-      scales: {
-        yAxes: [{
-          ticks: {
-            min: 0,
-          }
-        }]
-      }
-    }
-  };
-  const myChart = new Chart(
-    document.getElementById('dashChart'),
-    config
-  );
-}
 // 'fullname', 'country', 'state', 'lga', 'center', 'role', 'email', 'password'
 
 $('body').append(`

@@ -37,11 +37,15 @@ window.addEventListener('load', getAllCentres, false);
 
 function getAllCentres() {
   let getTables = ""
+  let center = []
+  let noStudent = []
   fetch(`${hostLocal}php/?getCenters`)
     .then(response => response.json())
     .then(jsonResponse => {
       for (const key in jsonResponse) {
         // console.log(jsonResponse[key]);
+        center.push(jsonResponse[key]['centre_name']);
+        noStudent.push(jsonResponse[key]['total_student']);
         getTables += `
             <tr>
                 <td>${jsonResponse[key]['centre_name']}</td>
@@ -58,8 +62,57 @@ function getAllCentres() {
                 </td>
             </tr>
         `;
+      
+      
       }
-      document.getElementById('send-with').innerHTML = getTables
+
+      if ($('#dashChart')) {
+        const labels = center;
+      
+        const data = {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Total Students',
+              backgroundColor: '#23608A',
+              borderColor: 'rgb(255, 99, 132)',
+              borderRadius: 5,
+              data: noStudent
+              
+            },
+            {
+              label: 'Total Logins',
+              backgroundColor: '#F7941D',
+              borderColor: 'rgb(255, 99, 132)',
+              borderRadius: 5,
+              data: [12, 10],
+            }
+          ]
+        };
+      
+        const config = {
+          type: 'bar',
+          data: data,
+          options: {
+            barValueSpacing: 20,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                }
+              }]
+            }
+          }
+        };
+        const myChart = new Chart(
+          document.getElementById('dashChart'),
+          config
+        );
+      }
+      $("#send-with").html(getTables)
+      
+     
+      
     });
     
 }
